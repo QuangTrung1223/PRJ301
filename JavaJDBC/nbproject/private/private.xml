@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/src/java/controller/LoginController.java</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/web/index.jsp</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/web/login.jsp</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/src/java/model/Member.java</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/src/java/constant/MessageConstant.java</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/web/banned.jsp</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/web/home.jsp</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/src/java/controller/RegisterController.java</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/src/java/controller/AuthController.java</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/src/java/dal/DBContext.java</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/web/register.jsp</file>
+            <file>file:/D:/Semester4/PRJ301/JavaJDBC/src/java/dal/MemberDAO.java</file>
+        </group>
+    </open-files>
+</project-private>
