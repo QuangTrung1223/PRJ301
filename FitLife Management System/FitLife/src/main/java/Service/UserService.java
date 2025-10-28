@@ -65,4 +65,20 @@ public class UserService {
         System.out.println("UserService: Đăng ký user với email: " + request.getEmail());
         return accountDAO.register(request.getUsername(), hashedPassword, request.getEmail());
     }
+
+    // Thêm phương thức để lấy thông tin người dùng theo email
+    public Response<User> getUserByEmail(String email) {
+        User user = accountDAO.getUserByEmail(email);
+        if (user != null) {
+            return new Response<>(user, true, "Tìm thấy người dùng");
+        } else {
+            return new Response<>(null, false, "Email không đúng");
+        }
+    }
+    
+    public boolean updatePassword(String email, String newPassword) {
+    return accountDAO.updatePassword(email, newPassword);
+}
+    
+    
 }

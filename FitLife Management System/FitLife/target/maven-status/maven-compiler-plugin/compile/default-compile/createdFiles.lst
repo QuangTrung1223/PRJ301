@@ -3,7 +3,10 @@ dal\DietDAO.class
 dal\UserDAO.class
 model\Workout.class
 controller\ProgressServlet.class
+controller\VerifyOtpServlet.class
 dto\Response.class
+Service\EmailService.class
+controller\ResetPasswordServlet.class
 model\Course.class
 dto\RegisterRequest.class
 model\Role.class
@@ -17,6 +20,7 @@ constant\URLConstant.class
 controller\LoginServlet.class
 controller\WorkoutServlet.class
 controller\DietServlet.class
+Service\EmailService$1.class
 com\mycompany\fitlife\JakartaRestConfiguration.class
 model\Progress.class
 model\Diet.class

@@ -1,4 +1,6 @@
+D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\controller\ResetPasswordServlet.java
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\controller\ViewUserServlet.java
+D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\Service\EmailService.java
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\dal\WorkoutDAO.java
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\controller\BMICalculatorServlet.java
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\dal\ProgressDAO.java
@@ -19,6 +21,7 @@ D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\utils\Passwo
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\controller\LogoutServlet.java
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\controller\LoginServlet.java
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\model\Diet.java
+D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\controller\VerifyOtpServlet.java
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\dal\CourseDAO.java
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\Service\LoginService.java
 D:\Semester4\PRJ301\FitLife Management System\FitLife\src\main\java\model\Workout.java

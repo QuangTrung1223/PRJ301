@@ -4849,5 +4849,461 @@ form .btn {
         border-bottom: 1px solid #f1f3f4;
     }
 }
+/* Workouts Grid */
+.workout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    background: #f9f9f9;
+}
+
+/* Workout Card */
+.workout-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workout-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(255, 100, 0, 0.25);
+}
+
+.workout-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.workout-info {
+    padding: 18px 20px;
+    color: #333;
+}
+
+.workout-info h3 {
+    font-size: 20px;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.workout-info p {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.workout-info .details {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.workout-info .price {
+    display: inline-block;
+    background: #ff6600;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* ==============================
+   GLOBAL STYLES
+============================== */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.user-tab-panel {
+  padding: 30px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+/* ==============================
+   TABLE HEADER
+============================== */
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #ff7b00;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.table-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ff7b00;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.table-title i {
+  font-size: 1.7rem;
+}
+
+.filter-select {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: 0.3s;
+}
+
+.filter-select:hover {
+  border-color: #ff7b00;
+}
+
+/* ==============================
+   WORKOUT CARDS GRID
+============================== */
+.workout-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.workout-card {
+  background: linear-gradient(145deg, #fff 70%, #ff7b00 30%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.35s ease;
+}
+
+.workout-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.workout-info {
+  padding: 15px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.workout-info h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.workout-info p {
+  font-size: 0.9rem;
+  color: #555;
+  min-height: 40px;
+}
+
+.workout-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 5px;
+}
+
+.workout-price {
+  background: #ff7b00;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 8px 0;
+  margin-top: 10px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.workout-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.workout-card:hover .workout-price {
+  background: #ff5500;
+}
+
+/* ==============================
+   DIET CARDS GRID
+============================== */
+.diet-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.diet-card {
+  background: linear-gradient(135deg, #fff 70%, #ff7b00 30%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.diet-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.diet-info {
+  padding: 15px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.diet-info h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.diet-info p {
+  font-size: 0.9rem;
+  color: #555;
+  min-height: 40px;
+}
+
+.diet-meta {
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.diet-price {
+  background: #ff7b00;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 6px 0;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.diet-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.diet-card:hover .diet-price {
+  background: #ff5500;
+}
+
+/* ==============================
+   EMPTY STATE
+============================== */
+.empty-state {
+  text-align: center;
+  padding: 60px 0;
+  color: #888;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  color: #ff7b00;
+}
+
+.empty-state h3 {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin: 10px 0 20px 0;
+  color: #666;
+}
+
+.action-btn.primary {
+  background-color: #ff7b00;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.action-btn.primary:hover {
+  background-color: #ff5500;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+@media (max-width: 768px) {
+  .table-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filter-select {
+    width: 100%;
+  }
+
+  .workout-info h3,
+  .diet-info h3 {
+    font-size: 1rem;
+  }
+
+  .workout-info p,
+  .diet-info p {
+    font-size: 0.85rem;
+  }
+}
+.buy-btn {
+    display: inline-block;
+    background-color: #ff7a00; /* Cam tươi */
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    border: 3px solid #000; /* Viền đen dày */
+    border-radius: 4px; /* Bo nhẹ */
+    padding: 10px 22px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+.buy-btn:hover {
+    background-color: #e66900;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.buy-btn:active {
+    transform: scale(0.97);
+}
+.action-btn.primary {
+    display: inline-block;
+    background-color: #ff7a00; /* nền cam nổi bật */
+    color: #ffffff; /* chữ trắng */
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border: none; /* bỏ viền */
+    border-radius: 10px; /* bo góc nhẹ cho mềm mại */
+    padding: 12px 28px; /* để chữ không chạm mép */
+    margin: 10px 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3); /* bóng mờ tinh tế */
+    width: fit-content; /* vừa khít chữ */
+}
+
+/* Hiệu ứng hover */
+.action-btn.primary:hover {
+    background-color: #e66a00; /* cam đậm hơn */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 122, 0, 0.4);
+}
+
+/* Khi nhấn giữ */
+.action-btn.primary:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 6px rgba(255, 122, 0, 0.2);
+}
+.payment-container {
+    width: 60%;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.payment-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.payment-table th, .payment-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.total-row td {
+    font-size: 18px;
+    color: #ff7a00;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-info input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.pay-btn {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #ff7a00;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pay-btn:hover {
+    background-color: #e66900;
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+
+
+
 
 

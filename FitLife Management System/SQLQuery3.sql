@@ -86,7 +86,7 @@ CREATE TABLE Admin (
 );
 GO
 
-select * from 
+
 
 select * from Courses
 CREATE TABLE Courses (
@@ -99,6 +99,12 @@ CREATE TABLE Courses (
     calories_burned INT NOT NULL,
     created_at DATETIME DEFAULT GETDATE()
 );
+
+
+select * from Users
+DELETE FROM Users
+WHERE user_id = 21;
+
 
 -- =========================================
 -- SAMPLE DATA
@@ -188,5 +194,6 @@ VALUES
 (1, 67.0, 31.0, 13.7, 21.1, 'normal', 'Noticeable fat loss', '2025-10-17'),
 (1, 66.9, 31.1, 13.6, 21.0, 'normal', 'Reaching best form', '2025-10-18');
 GO
+
 
 

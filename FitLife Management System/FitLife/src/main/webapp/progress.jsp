@@ -270,11 +270,11 @@
 
                 <div class="story-card-modern">
                     <div class="story-image">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop" 
+                        <img src="guangtrump.jpg" 
                              alt="Success Story">
                     </div>
                     <div class="story-content">
-                        <h4>Mike Chen</h4>
+                        <h4>Guang Trump</h4>
                         <p class="story-timeframe">6 months</p>
                         <div class="story-progress">
                             <p><strong>Muscle Gain:</strong> +12 lbs</p>

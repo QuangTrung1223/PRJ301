@@ -90,9 +90,11 @@
                             <i class="fas fa-search"></i>
                             <input type="text" placeholder="Search users..." id="user-search">
                         </div>
-                        <button class="action-btn" onclick="openAddUserModal()">
-                            <i class="fas fa-user-plus"></i> Add User
+                        <!-- Thêm nút Add User -->
+                        <button class="admin-action-btn add" onclick="openAddUserModal()">
+                            <i class="fas fa-plus"></i> Add User
                         </button>
+                        
                     </div>
                 </div>
 
@@ -119,6 +121,11 @@
                                 <th class="col">Role</th>
                                 <th class="col">Join Date</th>
                                 <th class="col">Status</th>
+                                <!-- Thêm cột mới cho Gender, Age, Height, Weight -->
+                                <th class="col">Gender</th>
+                                <th class="col">Age</th>
+                                <th class="col">Height</th>
+                                <th class="col">Weight</th>
                                 <th class="col">Actions</th>
                             </tr>
                         </thead>
@@ -146,6 +153,11 @@
                                             <td class="col">
                                                 <span class="role-badge ${user.status.toLowerCase()}">${user.status}</span>
                                             </td>
+                                            <!-- Thêm td mới cho Gender, Age, Height, Weight -->
+                                            <td class="col">${user.gender}</td>
+                                            <td class="col">${user.age}</td>
+                                            <td class="col">${user.height}</td>
+                                            <td class="col">${user.weight}</td>
                                             <td class="col action-buttons">
                                                 <button class="action-btn view" onclick="viewUser('${user.id}')">
                                                     <i class="fas fa-eye"></i>
@@ -162,13 +174,11 @@
                                 </c:when>
                                 <c:otherwise>
                                     <tr>
-                                        <td colspan="7" class="empty-state">
+                                        <td colspan="11" class="empty-state"> <!-- Điều chỉnh colspan từ 7 thành 11 -->
                                             <i class="fas fa-users-slash"></i>
                                             <h3>No Users Found</h3>
                                             <p>It looks like there are no users to display. Try adding a new user or adjusting your filters.</p>
-                                            <button class="action-btn" onclick="openAddUserModal()">
-                                                <i class="fas fa-user-plus"></i> Add New User
-                                            </button>
+                                            
                                         </td>
                                     </tr>
                                 </c:otherwise>
@@ -377,7 +387,141 @@
         </div>
     </div>
 
+    <!-- Thêm Modal for Viewing User -->
+    <div class="modal" id="view-user-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>View User Details</h2>
+                <span class="close" onclick="closeModal('view-user-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="user-detail">
+                    <label><i class="fas fa-user"></i> Username:</label>
+                    <span id="view-username"></span>
+                </div>
+                <div class="user-detail">
+                    <label><i class="fas fa-envelope"></i> Email:</label>
+                    <span id="view-email"></span>
+                </div>
+                <div class="user-detail">
+                    <label><i class="fas fa-user-tag"></i> Role:</label>
+                    <span id="view-role"></span>
+                </div>
+                <div class="user-detail">
+                    <label><i class="fas fa-calendar-alt"></i> Join Date:</label>
+                    <span id="view-joinDate"></span>
+                </div>
+                <div class="user-detail">
+                    <label><i class="fas fa-check-circle"></i> Status:</label>
+                    <span id="view-status"></span>
+                </div>
+                <div class="user-detail">
+                    <label><i class="fas fa-venus-mars"></i> Gender:</label>
+                    <span id="view-gender"></span>
+                </div>
+                <div class="user-detail">
+                    <label><i class="fas fa-birthday-cake"></i> Age:</label>
+                    <span id="view-age"></span>
+                </div>
+                <div class="user-detail">
+                    <label><i class="fas fa-ruler-vertical"></i> Height:</label>
+                    <span id="view-height"></span>
+                </div>
+                <div class="user-detail">
+                    <label><i class="fas fa-weight"></i> Weight:</label>
+                    <span id="view-weight"></span>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('view-user-modal')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thêm Modal for Editing User -->
+    <div class="modal" id="edit-user-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit User</h2>
+                <span class="close" onclick="closeModal('edit-user-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-user-form" action="${pageContext.request.contextPath}/admin/update-user" method="post">
+                    <input type="hidden" name="id" id="edit-id">
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-user"></i> Username</label>
+                        <input type="text" name="username" id="edit-username" required>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" name="email" id="edit-email" required>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-lock"></i> Password (leave blank to keep current)</label>
+                        <input type="password" name="password" id="edit-password">
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-user-tag"></i> Role</label>
+                        <select name="role" id="edit-role" required>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-check-circle"></i> Status</label>
+                        <select name="status" id="edit-status" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <!-- Thêm tùy chọn status khác nếu cần -->
+                        </select>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-venus-mars"></i> Gender</label>
+                        <select name="gender" id="edit-gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-birthday-cake"></i> Age</label>
+                        <input type="number" name="age" id="edit-age" required>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-ruler-vertical"></i> Height</label>
+                        <input type="number" step="0.01" name="height" id="edit-height" required>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-weight"></i> Weight</label>
+                        <input type="number" step="0.01" name="weight" id="edit-weight" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" onclick="closeModal('edit-user-modal')">Cancel</button>
+                        <button type="submit" class="btn-primary">Update User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Thêm biến JS để lưu dữ liệu users từ server
+        var users = [
+            <c:forEach var="user" items="${allUsers}" varStatus="status">
+                {
+                    id: '${user.id}',
+                    username: '${user.username}',
+                    email: '${user.email}',
+                    role: '${user.role}',
+                    joinDate: '<fmt:formatDate value="${user.joinDate}" pattern="dd-MM-yyyy"/>',
+                    status: '${user.status}',
+                    gender: '${user.gender}',
+                    age: '${user.age}',
+                    height: '${user.height}',
+                    weight: '${user.weight}'
+                }${not status.last ? ',' : ''}
+            </c:forEach>
+        ];
+
         // Update current time
         function updateTime() {
             const now = new Date();
@@ -398,18 +542,48 @@
 
         // Placeholder functions for actions
         function viewUser(userId) {
-            alert('View user: ' + userId);
+            const user = users.find(u => u.id === userId);
+            if (user) {
+                document.getElementById('view-username').textContent = user.username;
+                document.getElementById('view-email').textContent = user.email;
+                document.getElementById('view-role').textContent = user.role;
+                document.getElementById('view-joinDate').textContent = user.joinDate;
+                document.getElementById('view-status').textContent = user.status;
+                document.getElementById('view-gender').textContent = user.gender;
+                document.getElementById('view-age').textContent = user.age;
+                document.getElementById('view-height').textContent = user.height;
+                document.getElementById('view-weight').textContent = user.weight;
+                document.getElementById('view-user-modal').style.display = 'block';
+            } else {
+                alert('User not found');
+            }
             // Implement view user logic
         }
 
         function editUser(userId) {
-            alert('Edit user: ' + userId);
+            const user = users.find(u => u.id === userId);
+            if (user) {
+                document.getElementById('edit-id').value = user.id;
+                document.getElementById('edit-username').value = user.username;
+                document.getElementById('edit-email').value = user.email;
+                document.getElementById('edit-role').value = user.role.toLowerCase();
+                document.getElementById('edit-status').value = user.status.toLowerCase();
+                document.getElementById('edit-gender').value = user.gender;
+                document.getElementById('edit-age').value = user.age;
+                document.getElementById('edit-height').value = user.height;
+                document.getElementById('edit-weight').value = user.weight;
+                document.getElementById('edit-password').value = ''; // Để trống để không thay đổi
+                document.getElementById('edit-user-modal').style.display = 'block';
+            } else {
+                alert('User not found');
+            }
             // Implement edit user logic
         }
 
         function deleteUser(userId) {
             if (confirm('Are you sure you want to delete user ' + userId + '?')) {
                 // Implement delete user logic
+                window.location.href = '${pageContext.request.contextPath}/admin/delete-user?id=' + userId;
                 alert('User ' + userId + ' deleted');
             }
         }

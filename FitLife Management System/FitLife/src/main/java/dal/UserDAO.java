@@ -7,10 +7,11 @@ import java.util.List;
 import model.User;
 import util.DBContext;
 import org.mindrot.jbcrypt.BCrypt;
+import utils.PasswordHasher;
 
 public class UserDAO extends DBContext {
 
-    //  Dùng được cho cả plain text lẫn bcrypt
+    // Dùng được cho cả plain text lẫn bcrypt
     public User checkLogin(String username, String password) {
         try {
             String sql = "SELECT * FROM Users WHERE username = ?";
@@ -123,5 +124,43 @@ public class UserDAO extends DBContext {
             e.printStackTrace();
         }
         return list;
+    }
+
+    // Thêm phương thức để lấy người dùng theo email
+    public User getUserByEmail(String email) {
+        try {
+            String sql = "SELECT * FROM Users WHERE email = ?";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("user_id"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("role")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+ public boolean updatePassword(String email, String hashedPassword) {
+        try {
+            String sql = "UPDATE Users SET password = ? WHERE email = ?";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, hashedPassword);
+            ps.setString(2, email);
+            int rows = ps.executeUpdate();
+            System.out.println("Đã cập nhật mật khẩu cho email: " + email + ", rows affected: " + rows);
+            return rows > 0;
+        } catch (Exception e) {
+            System.err.println("Lỗi cập nhật mật khẩu: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 }

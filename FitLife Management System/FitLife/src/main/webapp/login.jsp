@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login | FitLife</title>
+    <title>Đăng nhập | FitLife</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,21 +12,26 @@
 
     <section class="auth-section">
         <div class="auth-box">
-            <h2>Welcome Back</h2>
-            <p class="auth-subtitle">Log in to continue your fitness journey</p>
+            <h2>Chào mừng bạn trở lại</h2>
+            <p class="auth-subtitle">Đăng nhập để tiếp tục hành trình thể thao của bạn</p>
             
             <form action="login" method="post">
-                <label for="username">Username or Email</label>
-                <input id="username" name="username" type="text" placeholder="Enter your username or email" required>
+                <label for="username">Tên đăng nhập hoặc Email</label>
+                <input id="username" name="username" type="text" placeholder="Nhập tên đăng nhập hoặc email" required>
 
-                <label for="password">Password</label>
-                <input id="password" name="password" type="password" placeholder="Enter your password" required>
+                <label for="password">Mật khẩu</label>
+                <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" required>
 
-                <button type="submit" class="btn full-btn">Login</button>
+                <button type="submit" class="btn full-btn">Đăng nhập</button>
 
                 <p class="auth-footer">
-                    Don’t have an account? 
-                    <a href="register.jsp" class="link-orange">Sign Up</a>
+                    Chưa có tài khoản? 
+                    <a href="register.jsp" class="link-orange">Đăng ký</a>
+                </p>
+                <!-- Thêm liên kết Quên mật khẩu -->
+                <p class="auth-footer">
+                    Quên mật khẩu? 
+                    <a href="resetpassword.jsp" class="link-orange">Khôi phục mật khẩu</a>
                 </p>
             </form>
 
