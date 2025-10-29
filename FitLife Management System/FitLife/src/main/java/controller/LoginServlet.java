@@ -3,8 +3,6 @@ package controller;
 
 import Service.UserRoleService;
 import Service.UserService;
-import Service.LoginService;
-import constant.URLConstant;
 import dto.Response;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -102,7 +100,8 @@ public class LoginServlet extends HttpServlet {
             
             // Phân biệt role và redirect
             if("admin".equalsIgnoreCase(loggedInUser.getRole()) || accountRoleService.isAdmin(username)){
-                response.sendRedirect("admin-dashboard.jsp");
+                // Redirect to admin servlet to ensure data is loaded
+                response.sendRedirect(request.getContextPath() + "/admin-dashboard");
             } else {
                 response.sendRedirect("user-dashboard.jsp");
             }

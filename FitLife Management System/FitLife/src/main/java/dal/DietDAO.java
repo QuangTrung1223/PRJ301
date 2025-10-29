@@ -48,7 +48,7 @@ public class DietDAO extends DBContext {
     public List<Diet> getAllDiets() {
         List<Diet> diets = new ArrayList<>();
         try {
-            String sql = "SELECT d.*, u.username FROM Diets d JOIN Users u ON d.user_id = u.user_id ORDER BY d.date DESC";
+            String sql = "SELECT * FROM Diets ORDER BY diet_id DESC";
             PreparedStatement ps = c.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -59,7 +59,7 @@ public class DietDAO extends DBContext {
                     rs.getInt("calories"),
                     rs.getString("meal_type"),
                     rs.getString("description"),
-                    rs.getDate("date").toLocalDate(),
+                    rs.getDate("date") != null ? rs.getDate("date").toLocalDate() : null,
                     rs.getString("bmi_category")
                 );
                 diets.add(diet);
@@ -81,6 +81,24 @@ public class DietDAO extends DBContext {
             ps.setString(5, description);
             ps.setDate(6, java.sql.Date.valueOf(LocalDate.now()));
             ps.setString(7, bmiCategory);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    // Phương thức để thêm diet mẫu (không cần user_id)
+    public boolean addDiet(Diet diet) {
+        try {
+            String sql = "INSERT INTO Diets (meal_name, description, meal_type, calories, nutrition_info) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, diet.getMealName());
+            ps.setString(2, diet.getDescription());
+            ps.setString(3, diet.getMealType());
+            ps.setInt(4, diet.getCalories());
+            ps.setString(5, diet.getDescription()); // Using description as nutrition info
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {

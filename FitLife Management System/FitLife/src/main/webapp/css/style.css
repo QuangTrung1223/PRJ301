@@ -8,8 +8,8 @@
 }
 
 body {
-  background-color: #f2f2f2;
-  color: #111;
+  background-color: #f8f9fa;
+  color: #212529;
 }
 
 /* === NAVBAR === */
@@ -18,7 +18,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 60px;
-  background: #111;
+  background: #212529;
   color: white;
   position: sticky;
   top: 0;
@@ -110,7 +110,7 @@ body {
 }
 
 .content p {
-  color: #444;
+  color: #6c757d;
   line-height: 1.6;
 }
 
@@ -168,7 +168,7 @@ form .btn {
   justify-content: center;
   align-items: center;
   height: 90vh;
-  background: linear-gradient(to right, #111, #333);
+  background: linear-gradient(to right, #212529, #495057);
   animation: fadeUp 1s ease;
 }
 
@@ -182,21 +182,21 @@ form .btn {
 }
 
 .auth-box h2 {
-  color: #111;
+  color: #212529;
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
 .auth-subtitle {
-  color: #666;
+  color: #6c757d;
   font-size: 1rem;
   margin-bottom: 25px;
 }
 
 .auth-box label {
   font-weight: 600;
-  color: #111;
+  color: #212529;
   display: block;
   margin-top: 10px;
   margin-bottom: 5px;
@@ -238,7 +238,7 @@ form .btn {
 .auth-footer {
   text-align: center;
   margin-top: 15px;
-  color: #444;
+  color: #6c757d;
 }
 
 .auth-footer a.link-orange {
@@ -257,7 +257,7 @@ form .btn {
   align-items: center;
   height: 100vh;
   background: 
-    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    linear-gradient(rgba(33, 37, 41, 0.8), rgba(73, 80, 87, 0.8)),
     url("../img/gym-bg.jpg") center center/cover no-repeat;
   background-attachment: fixed;
   animation: fadeUp 1s ease;
@@ -286,13 +286,13 @@ form .btn {
 }
 
 .dashboard-header h1 {
-  color: #111;
+  color: #212529;
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
 .dashboard-header p {
-  color: #666;
+  color: #6c757d;
   font-size: 1.1rem;
 }
 
@@ -317,7 +317,7 @@ form .btn {
 }
 
 .stat-card h3 {
-  color: #666;
+  color: #6c757d;
   font-size: 1rem;
   margin-bottom: 10px;
 }
@@ -338,7 +338,7 @@ form .btn {
 }
 
 .dashboard-section h2 {
-  color: #111;
+  color: #212529;
   margin-bottom: 20px;
   border-bottom: 2px solid #ff7b00;
   padding-bottom: 10px;
@@ -364,7 +364,7 @@ form .btn {
 
 .data-table th {
   background: #f8f9fa;
-  color: #111;
+  color: #212529;
   font-weight: 600;
 }
 
@@ -450,7 +450,7 @@ form .btn {
 }
 
 .calculator-header h1 {
-  color: #111;
+  color: #212529;
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
@@ -506,7 +506,7 @@ form .btn {
 }
 
 .form-group small {
-  color: #666;
+  color: #6c757d;
   font-size: 0.8rem;
 }
 
@@ -518,7 +518,7 @@ form .btn {
 }
 
 .bmi-info h3 {
-  color: #111;
+  color: #212529;
   margin-bottom: 20px;
 }
 
@@ -538,7 +538,7 @@ form .btn {
 
 .bmi-category p {
   margin: 0;
-  color: #666;
+  color: #6c757d;
   font-size: 0.9rem;
 }
 
@@ -555,7 +555,7 @@ form .btn {
 }
 
 .result-header h1 {
-  color: #111;
+  color: #212529;
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
@@ -571,7 +571,7 @@ form .btn {
 }
 
 .bmi-result-card h2 {
-  color: #111;
+  color: #212529;
   margin-bottom: 30px;
 }
 
@@ -597,7 +597,7 @@ form .btn {
 }
 
 .bmi-description {
-  color: #666;
+  color: #6c757d;
   font-size: 1.1rem;
   line-height: 1.6;
 }
@@ -619,7 +619,7 @@ form .btn {
 }
 
 .recommendation-section h3 {
-  color: #111;
+  color: #212529;
   margin-bottom: 20px;
 }
 
@@ -643,7 +643,7 @@ form .btn {
 
 .recommendation-item p {
   margin: 0;
-  color: #555;
+  color: #495057;
   line-height: 1.5;
 }
 
@@ -675,7 +675,7 @@ form .btn {
 }
 
 .bmi-chart h3 {
-  color: #111;
+  color: #212529;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -822,13 +822,13 @@ form .btn {
 }
 
 .section-header h2 {
-  color: #111;
+  color: #212529;
   font-size: 2.5rem;
   margin-bottom: 15px;
 }
 
 .section-header p {
-  color: #666;
+  color: #6c757d;
   font-size: 1.1rem;
 }
 
@@ -903,14 +903,14 @@ form .btn {
 
 .workout-item h4,
 .meal-item h4 {
-  color: #111;
+  color: #212529;
   margin-bottom: 10px;
   font-size: 1.2rem;
 }
 
 .workout-item p,
 .meal-item p {
-  color: #666;
+  color: #6c757d;
   margin: 5px 0;
   line-height: 1.5;
 }
@@ -939,7 +939,7 @@ form .btn {
 }
 
 .section-title h3 {
-  color: #111;
+  color: #212529;
   font-size: 1.8rem;
   margin: 0;
 }
@@ -957,7 +957,7 @@ form .btn {
 }
 
 .progress-item h4 {
-  color: #111;
+  color: #212529;
   margin-bottom: 20px;
   font-size: 1.3rem;
 }
@@ -1000,7 +1000,7 @@ form .btn {
 
 .bmi-date {
   font-size: 0.9rem;
-  color: #666;
+  color: #6c757d;
 }
 
 /* === ACHIEVEMENTS GRID === */
@@ -1028,7 +1028,7 @@ form .btn {
 }
 
 .achievement-item h4 {
-  color: #111;
+  color: #212529;
   margin-bottom: 15px;
 }
 
@@ -1045,7 +1045,7 @@ form .btn {
 
 .stat-label {
   font-size: 0.9rem;
-  color: #666;
+  color: #6c757d;
 }
 
 /* === NUTRITION STATS === */
@@ -1062,7 +1062,7 @@ form .btn {
 }
 
 .nutrition-item h4 {
-  color: #111;
+  color: #212529;
   margin-bottom: 20px;
 }
 
@@ -1106,7 +1106,7 @@ form .btn {
 .macro-label {
   min-width: 80px;
   font-weight: 600;
-  color: #111;
+  color: #212529;
 }
 
 .macro-bar {
@@ -1178,7 +1178,7 @@ form .btn {
   transform: translateY(-50%);
   font-size: 0.8rem;
   font-weight: 600;
-  color: #111;
+  color: #212529;
 }
 
 /* === NUTRITION TIPS === */
@@ -1191,7 +1191,7 @@ form .btn {
 }
 
 .nutrition-tips h3 {
-  color: #111;
+  color: #212529;
   text-align: center;
   margin-bottom: 30px;
   font-size: 1.8rem;
@@ -1211,12 +1211,12 @@ form .btn {
 }
 
 .tip-item h4 {
-  color: #111;
+  color: #212529;
   margin-bottom: 15px;
 }
 
 .tip-item p {
-  color: #666;
+  color: #6c757d;
   line-height: 1.5;
 }
 
@@ -1230,7 +1230,7 @@ form .btn {
 }
 
 .success-stories h3 {
-  color: #111;
+  color: #212529;
   text-align: center;
   margin-bottom: 30px;
   font-size: 1.8rem;
@@ -1263,17 +1263,17 @@ form .btn {
 }
 
 .story-info h4 {
-  color: #111;
+  color: #212529;
   margin-bottom: 5px;
 }
 
 .story-info p {
-  color: #666;
+  color: #6c757d;
   margin: 0;
 }
 
 .story-progress p {
-  color: #555;
+  color: #495057;
   margin: 8px 0;
 }
 
@@ -1296,13 +1296,13 @@ form .btn {
 }
 
 .cta-section h3 {
-  color: #111;
+  color: #212529;
   margin-bottom: 15px;
   font-size: 1.8rem;
 }
 
 .cta-section p {
-  color: #666;
+  color: #6c757d;
   margin-bottom: 30px;
   font-size: 1.1rem;
 }
@@ -3514,7 +3514,7 @@ form .btn {
 
 .stat-label {
   font-size: 0.9rem;
-  color: #666;
+  color: #6c757d;
 }
 
 /* Success Stories Section */
@@ -5294,6 +5294,535 @@ body {
 .pay-btn:hover {
     background-color: #e66900;
     transform: translateY(-2px);
+}
+
+/* === WORKOUT & DIET CARDS GRID === */
+.workout-cards-grid, .meal-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.workout-card, .meal-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workout-card:hover, .meal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.workout-header, .meal-header {
+  padding: 20px 20px 15px;
+  background: linear-gradient(135deg, #ff7b00, #ff9500);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.workout-name, .meal-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.workout-type-badge, .meal-type-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.workout-body, .meal-body {
+  padding: 20px;
+}
+
+.workout-description, .meal-description {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.workout-stats, .meal-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.stat-item i {
+  color: #ff7b00;
+}
+
+.workout-actions, .meal-actions {
+  padding: 15px 20px;
+  background: #f8f9fa;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.workout-actions .action-btn, .meal-actions .action-btn {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+/* === AI CHATBOT STYLES === */
+.chatbot-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.chatbot-container {
+    width: 90%;
+    max-width: 500px;
+    height: 80%;
+    max-height: 600px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 3px solid #ff7b00;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #ff7b00 0%, #ff9500 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e66a00;
+}
+
+.chatbot-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.chatbot-title i {
+    font-size: 1.5rem;
+}
+
+.chatbot-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.chatbot-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-message, .bot-message {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.user-message {
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.user-message .message-avatar {
+    background: linear-gradient(135deg, #ff7b00, #ff9500);
+}
+
+.bot-message .message-avatar {
+    background: linear-gradient(135deg, #6c757d, #495057);
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 15px 20px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.user-message .message-content {
+    background: linear-gradient(135deg, #ff7b00, #ff9500);
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message .message-content {
+    background: white;
+    color: #333;
+    border: 2px solid #e9ecef;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.message-content p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.message-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.message-content li {
+    margin: 5px 0;
+}
+
+.chatbot-input {
+    padding: 20px;
+    background: white;
+    border-top: 2px solid #e9ecef;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#chatbot-input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#chatbot-input:focus {
+    border-color: #ff7b00;
+    box-shadow: 0 0 0 3px rgba(255, 123, 0, 0.1);
+}
+
+#chatbot-send {
+    background: linear-gradient(135deg, #ff7b00, #ff9500);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 123, 0, 0.3);
+}
+
+#chatbot-send:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 123, 0, 0.4);
+}
+
+#chatbot-send:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.typing-indicator i {
+    animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-indicator i:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator i:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+/* === UPDATED COLOR SCHEME === */
+/* Primary Orange Colors */
+:root {
+    --primary-orange: #ff7b00;
+    --primary-orange-dark: #e66a00;
+    --primary-orange-light: #ff9500;
+    --secondary-gray: #6c757d;
+    --secondary-gray-dark: #495057;
+    --secondary-gray-light: #adb5bd;
+    --background-white: #ffffff;
+    --background-light: #f8f9fa;
+    --text-black: #212529;
+    --text-gray: #6c757d;
+    --border-gray: #dee2e6;
+}
+
+/* Update existing elements with new color scheme */
+.nav-item.progress-tracking {
+    background: linear-gradient(135deg, #ff7b00, #ff9500);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-item.progress-tracking:hover {
+    background: linear-gradient(135deg, #e66a00, #ff7b00);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(255, 123, 0, 0.3);
+}
+
+/* Success and Error Messages */
+.success-message {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    color: #155724;
+    border: 2px solid #c3e6cb;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(21, 87, 36, 0.1);
+}
+
+.error-message {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(114, 28, 36, 0.1);
+}
+
+/* BMI Distribution Styles */
+.bmi-distribution {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bmi-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.bmi-stat:hover {
+    background: rgba(255, 123, 0, 0.2);
+    transform: translateX(5px);
+}
+
+.bmi-label {
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bmi-label.normal {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    color: white;
+}
+
+.bmi-label.overweight {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+}
+
+.bmi-label.obese {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.bmi-label.underweight {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+}
+
+.bmi-count {
+    font-weight: 700;
+    color: white;
+    font-size: 1.1rem;
+}
+
+/* Progress Details Grid */
+.progress-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.detail-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+}
+
+.detail-section h3 {
+    color: #ff7b00;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.detail-item span {
+    color: #212529;
+    font-weight: 500;
+}
+
+.notes-content {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    min-height: 80px;
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* Responsive Design for Chatbot */
+@media (max-width: 768px) {
+    .chatbot-container {
+        width: 95%;
+        height: 90%;
+        max-height: none;
+    }
+    
+    .progress-details-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .message-content {
+        max-width: 90%;
+    }
+    
+    .chatbot-header {
+        padding: 15px;
+    }
+    
+    .chatbot-messages {
+        padding: 15px;
+    }
+    
+    .chatbot-input {
+        padding: 15px;
+    }
 }
 
 

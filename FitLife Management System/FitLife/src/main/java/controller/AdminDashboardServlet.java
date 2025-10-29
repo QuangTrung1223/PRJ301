@@ -25,44 +25,59 @@ public class AdminDashboardServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        User currentUser = (User) session.getAttribute("account");
+        // Use actual session attributes from LoginServlet
+        String sessionLogin = (String) session.getAttribute("session_login");
+        String userRole = (String) session.getAttribute("user_role");
 
-        // Nếu chưa login hoặc không phải admin thì chuyển hướng về login
-        if (currentUser == null || !"admin".equalsIgnoreCase(currentUser.getRole())) {
-            response.sendRedirect("login.jsp");
+        // Redirect to login if not logged in or not admin
+        if (sessionLogin == null || userRole == null || !"admin".equalsIgnoreCase(userRole)) {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;
         }
 
-        // Lấy dữ liệu từ database
+        // Fetch data from database
         UserDAO userDAO = new UserDAO();
         DietDAO dietDAO = new DietDAO();
         WorkoutDAO workoutDAO = new WorkoutDAO();
         ProgressDAO progressDAO = new ProgressDAO();
 
+        System.out.println("=== [AdminDashboardServlet] Fetching data ===");
         List<User> allUsers = userDAO.getAllUsers();
+        System.out.println("Users fetched: " + allUsers.size());
+        
         List<Diet> allDiets = dietDAO.getAllDiets();
+        System.out.println("Diets fetched: " + allDiets.size());
+        
         List<Workout> allWorkouts = workoutDAO.getAllWorkouts();
+        System.out.println("Workouts fetched: " + allWorkouts.size());
+        
         List<Progress> allProgress = progressDAO.getAllProgress();
+        System.out.println("Progress fetched: " + allProgress.size());
 
-        // Ghi log để kiểm tra
-        System.out.println("=== [AdminDashboardServlet] ===");
-        System.out.println("Số lượng User: " + allUsers.size());
-        for (User u : allUsers) {
-            System.out.println("User: " + u.getUsername() + " | Role: " + u.getRole() + " | Email: " + u.getEmail());
-        }
-
-        // Truyền dữ liệu sang JSP
+        // Set data to JSP
         request.setAttribute("allUsers", allUsers);
         request.setAttribute("allDiets", allDiets);
         request.setAttribute("allWorkouts", allWorkouts);
         request.setAttribute("allProgress", allProgress);
-        // Thêm các thuộc tính thống kê
+        // Stats
         request.setAttribute("totalUsers", allUsers.size());
         request.setAttribute("totalWorkouts", allWorkouts.size());
         request.setAttribute("totalDiets", allDiets.size());
         request.setAttribute("totalProgress", allProgress.size());
+        
+        // Flash messages from session
+        String success = (String) session.getAttribute("success");
+        String error = (String) session.getAttribute("error");
+        if (success != null) {
+            request.setAttribute("success", success);
+            session.removeAttribute("success");
+        }
+        if (error != null) {
+            request.setAttribute("error", error);
+            session.removeAttribute("error");
+        }
 
-        // Chuyển tiếp đến JSP
+        // Forward to JSP
         request.getRequestDispatcher("/admin-dashboard.jsp").forward(request, response);
     }
 
@@ -72,3 +87,6 @@ public class AdminDashboardServlet extends HttpServlet {
         doGet(request, response);
     }
 }
+
+
+

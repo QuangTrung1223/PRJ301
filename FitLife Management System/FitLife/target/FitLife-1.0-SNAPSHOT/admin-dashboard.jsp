@@ -77,14 +77,40 @@
                         <button class="nav-item" data-tab="workouts"><i class="fas fa-dumbbell"></i> Workouts</button>
                         <button class="nav-item" data-tab="diets"><i class="fas fa-utensils"></i> Diets</button>
                         <button class="nav-item" data-tab="progress"><i class="fas fa-chart-line"></i> Progress</button>
+                        <a href="admin/progress-tracking" class="nav-item progress-tracking">
+                            <i class="fas fa-chart-bar"></i> Progress Tracking
+                        </a>
                     </div>
                 </div>
             </aside>
 
-            <!-- Content Area -->
-            <main class="admin-content-area">
-                <div class="content-header">
-                    <h2 id="content-title"><i class="fas fa-users"></i> User Management</h2>
+        <!-- Content Area -->
+        <main class="admin-content-area">
+            <!-- Success/Error Messages -->
+            <c:if test="${not empty success}">
+                <div class="success-message">
+                    <i class="fas fa-check-circle"></i> ${success}
+                </div>
+            </c:if>
+            <c:if test="${not empty error}">
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> ${error}
+                </div>
+            </c:if>
+            
+            <!-- Debug Info -->
+            <div style="background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px;">
+                <strong>Debug Info:</strong><br>
+                Total Users: ${totalUsers}<br>
+                Users List Size: ${allUsers.size()}<br>
+                Users Empty: ${empty allUsers}<br>
+                <c:if test="${not empty allUsers}">
+                    First User: ${allUsers[0].username} (ID: ${allUsers[0].userId})
+                </c:if>
+            </div>
+            
+            <div class="content-header">
+                <h2 id="content-title"><i class="fas fa-users"></i> User Management</h2>
                     <div class="content-actions">
                         <div class="search-container">
                             <i class="fas fa-search"></i>
@@ -93,6 +119,10 @@
                         <!-- Thêm nút Add User -->
                         <button class="admin-action-btn add" onclick="openAddUserModal()">
                             <i class="fas fa-plus"></i> Add User
+                        </button>
+                        <!-- Thêm nút Add Sample Data -->
+                        <button class="admin-action-btn sample" onclick="addSampleData()">
+                            <i class="fas fa-database"></i> Add Sample Data
                         </button>
                         
                     </div>
@@ -142,7 +172,7 @@
                                                     <span class="username">${user.username}</span>
                                                 </div>
                                             </td>
-                                            <td class="col id-text">${user.id}</td>
+                                            <td class="col id-text">${user.userId}</td>
                                             <td class="col email-text">${user.email}</td>
                                             <td class="col">
                                                 <span class="role-badge ${user.role.toLowerCase()}">${user.role}</span>
@@ -159,13 +189,13 @@
                                             <td class="col">${user.height}</td>
                                             <td class="col">${user.weight}</td>
                                             <td class="col action-buttons">
-                                                <button class="action-btn view" onclick="viewUser('${user.id}')">
+                                                <button class="action-btn view" onclick="viewUser('${user.userId}')">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
-                                                <button class="action-btn edit" onclick="editUser('${user.id}')">
+                                                <button class="action-btn edit" onclick="editUser('${user.userId}')">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
-                                                <button class="action-btn delete" onclick="deleteUser('${user.id}')">
+                                                <button class="action-btn delete" onclick="deleteUser('${user.userId}')">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
@@ -187,108 +217,137 @@
                     </table>
                 </div>
 
-                <!-- Workouts Tab (Placeholder) -->
+                <!-- Workouts Tab -->
                 <div class="data-table-container" id="workouts-tab" style="display: none;">
                     <div class="table-header">
                         <div class="table-title">
                             <i class="fas fa-dumbbell"></i> All Workouts
                         </div>
+                        <div class="table-filters">
+                            <select class="filter-select" id="workout-type-filter">
+                                <option value="all">All Types</option>
+                                <option value="Strength">Strength</option>
+                                <option value="Cardio">Cardio</option>
+                                <option value="Core">Core</option>
+                                <option value="Functional">Functional</option>
+                                <option value="Plyometric">Plyometric</option>
+                            </select>
+                        </div>
                     </div>
-                    <table class="modern-table">
-                        <thead>
-                            <tr class="table-header-row">
-                                <th class="col">Workout ID</th>
-                                <th class="col">Name</th>
-                                <th class="col">Description</th>
-                                <th class="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-body">
-                            <c:choose>
-                                <c:when test="${not empty allWorkouts}">
-                                    <c:forEach var="workout" items="${allWorkouts}">
-                                        <tr class="table-row">
-                                            <td class="col id-text">${workout.id}</td>
-                                            <td class="col">${workout.name}</td>
-                                            <td class="col">${workout.description}</td>
-                                            <td class="col action-buttons">
-                                                <button class="action-btn view" onclick="viewWorkout('${workout.id}')">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="action-btn edit" onclick="editWorkout('${workout.id}')">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="action-btn delete" onclick="deleteWorkout('${workout.id}')">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </c:when>
-                                <c:otherwise>
-                                    <tr>
-                                        <td colspan="4" class="empty-state">
-                                            <i class="fas fa-dumbbell"></i>
-                                            <h3>No Workouts Found</h3>
-                                            <p>It looks like there are no workouts to display.</p>
-                                        </td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
-                        </tbody>
-                    </table>
+                    
+                    <!-- Workout Cards Grid -->
+                    <div class="workout-cards-grid">
+                        <c:choose>
+                            <c:when test="${not empty allWorkouts}">
+                                <c:forEach var="workout" items="${allWorkouts}">
+                                    <div class="workout-card" data-type="${workout.workoutType}">
+                                        <div class="workout-header">
+                                            <h3 class="workout-name">${workout.workoutName}</h3>
+                                            <span class="workout-type-badge ${workout.workoutType.toLowerCase()}">${workout.workoutType}</span>
+                                        </div>
+                                        <div class="workout-body">
+                                            <p class="workout-description">${workout.description}</p>
+                                            <div class="workout-stats">
+                                                <div class="stat-item">
+                                                    <i class="fas fa-clock"></i>
+                                                    <span>${workout.duration} min</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <i class="fas fa-fire"></i>
+                                                    <span>${workout.caloriesBurned} cal</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="workout-actions">
+                                            <button class="action-btn view" onclick="viewWorkout('${workout.workoutId}')">
+                                                <i class="fas fa-eye"></i> View
+                                            </button>
+                                            <button class="action-btn edit" onclick="editWorkout('${workout.workoutId}')">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </button>
+                                            <button class="action-btn delete" onclick="deleteWorkout('${workout.workoutId}')">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="empty-state">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <h3>No Workouts Found</h3>
+                                    <p>It looks like there are no workouts to display.</p>
+                                    <button class="admin-action-btn add" onclick="addSampleData()">
+                                        <i class="fas fa-plus"></i> Add Sample Workouts
+                                    </button>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </div>
 
-                <!-- Diets Tab (Placeholder) -->
+                <!-- Diets Tab -->
                 <div class="data-table-container" id="diets-tab" style="display: none;">
                     <div class="table-header">
                         <div class="table-title">
                             <i class="fas fa-utensils"></i> All Diets
                         </div>
+                        <div class="table-filters">
+                            <select class="filter-select" id="meal-type-filter">
+                                <option value="all">All Types</option>
+                                <option value="Breakfast">Breakfast</option>
+                                <option value="Lunch">Lunch</option>
+                                <option value="Dinner">Dinner</option>
+                                <option value="Snack">Snack</option>
+                            </select>
+                        </div>
                     </div>
-                    <table class="modern-table">
-                        <thead>
-                            <tr class="table-header-row">
-                                <th class="col">Diet ID</th>
-                                <th class="col">Name</th>
-                                <th class="col">Description</th>
-                                <th class="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-body">
-                            <c:choose>
-                                <c:when test="${not empty allDiets}">
-                                    <c:forEach var="diet" items="${allDiets}">
-                                        <tr class="table-row">
-                                            <td class="col id-text">${diet.id}</td>
-                                            <td class="col">${diet.name}</td>
-                                            <td class="col">${diet.description}</td>
-                                            <td class="col action-buttons">
-                                                <button class="action-btn view" onclick="viewDiet('${diet.id}')">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="action-btn edit" onclick="editDiet('${diet.id}')">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="action-btn delete" onclick="deleteDiet('${diet.id}')">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </c:when>
-                                <c:otherwise>
-                                    <tr>
-                                        <td colspan="4" class="empty-state">
-                                            <i class="fas fa-utensils"></i>
-                                            <h3>No Diets Found</h3>
-                                            <p>It looks like there are no diets to display.</p>
-                                        </td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
-                        </tbody>
-                    </table>
+                    
+                    <!-- Diet Cards Grid -->
+                    <div class="meal-cards-grid">
+                        <c:choose>
+                            <c:when test="${not empty allDiets}">
+                                <c:forEach var="diet" items="${allDiets}">
+                                    <div class="meal-card" data-type="${diet.mealType}">
+                                        <div class="meal-header">
+                                            <h3 class="meal-name">${diet.mealName}</h3>
+                                            <span class="meal-type-badge ${diet.mealType.toLowerCase()}">${diet.mealType}</span>
+                                        </div>
+                                        <div class="meal-body">
+                                            <p class="meal-description">${diet.description}</p>
+                                            <div class="meal-stats">
+                                                <div class="stat-item">
+                                                    <i class="fas fa-fire"></i>
+                                                    <span>${diet.calories} cal</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="meal-actions">
+                                            <button class="action-btn view" onclick="viewDiet('${diet.dietId}')">
+                                                <i class="fas fa-eye"></i> View
+                                            </button>
+                                            <button class="action-btn edit" onclick="editDiet('${diet.dietId}')">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </button>
+                                            <button class="action-btn delete" onclick="deleteDiet('${diet.dietId}')">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="empty-state">
+                                    <i class="fas fa-utensils"></i>
+                                    <h3>No Diets Found</h3>
+                                    <p>It looks like there are no diets to display.</p>
+                                    <button class="admin-action-btn add" onclick="addSampleData()">
+                                        <i class="fas fa-plus"></i> Add Sample Diets
+                                    </button>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </div>
 
                 <!-- Progress Tab (Placeholder) -->
@@ -313,20 +372,20 @@
                                 <c:when test="${not empty allProgress}">
                                     <c:forEach var="progress" items="${allProgress}">
                                         <tr class="table-row">
-                                            <td class="col id-text">${progress.id}</td>
+                                            <td class="col id-text">${progress.progressId}</td>
                                             <td class="col">${progress.userId}</td>
                                             <td class="col date-text">
                                                 <fmt:formatDate value="${progress.date}" pattern="dd-MM-yyyy"/>
                                             </td>
                                             <td class="col">${progress.weight}</td>
                                             <td class="col action-buttons">
-                                                <button class="action-btn view" onclick="viewProgress('${progress.id}')">
+                                                <button class="action-btn view" onclick="viewProgress('${progress.progressId}')">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
-                                                <button class="action-btn edit" onclick="editProgress('${progress.id}')">
+                                                <button class="action-btn edit" onclick="editProgress('${progress.progressId}')">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
-                                                <button class="action-btn delete" onclick="deleteProgress('${progress.id}')">
+                                                <button class="action-btn delete" onclick="deleteProgress('${progress.progressId}')">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
@@ -377,6 +436,25 @@
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-venus-mars"></i> Gender</label>
+                        <select name="gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-birthday-cake"></i> Age</label>
+                        <input type="number" name="age" min="1" max="120" required>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                        <input type="number" step="0.01" name="height" min="50" max="300" required>
+                    </div>
+                    <div class="input-field full-width">
+                        <label><i class="fas fa-weight"></i> Weight (kg)</label>
+                        <input type="number" step="0.01" name="weight" min="10" max="500" required>
                     </div>
                     <div class="modal-actions">
                         <button type="button" class="btn-secondary" onclick="closeModal('add-user-modal')">Cancel</button>
@@ -508,7 +586,7 @@
         var users = [
             <c:forEach var="user" items="${allUsers}" varStatus="status">
                 {
-                    id: '${user.id}',
+                    id: '${user.userId}',
                     username: '${user.username}',
                     email: '${user.email}',
                     role: '${user.role}',
@@ -627,6 +705,13 @@
         function deleteProgress(progressId) {
             if (confirm('Are you sure you want to delete progress ' + progressId + '?')) {
                 alert('Progress ' + progressId + ' deleted');
+            }
+        }
+        
+        // Function để thêm sample data
+        function addSampleData() {
+            if (confirm('Are you sure you want to add sample data? This will add 20 workouts and 20 diets to the database.')) {
+                window.location.href = '${pageContext.request.contextPath}/admin/add-sample-data';
             }
         }
 

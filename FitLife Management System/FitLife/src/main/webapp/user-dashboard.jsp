@@ -121,6 +121,10 @@
                                 <i class="fas fa-lightbulb"></i>
                                 <span>Recommendations</span>
                             </button>
+                            <button class="nav-item" onclick="openChatbot()">
+                                <i class="fas fa-robot"></i>
+                                <span>AI Assistant</span>
+                            </button>
                         </nav>
                     </div>
                 </div>
@@ -812,7 +816,55 @@
                 </div>
             </div>
         </div>
-                                    
+
+    <!-- AI Chatbot Modal -->
+    <div class="chatbot-modal" id="chatbot-modal">
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Fitness Assistant</span>
+                </div>
+                <button class="chatbot-close" onclick="closeChatbot()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your AI fitness assistant. I can help you with:</p>
+                        <ul>
+                            <li>BMI calculations and health advice</li>
+                            <li>Workout recommendations</li>
+                            <li>Nutrition and diet tips</li>
+                            <li>Progress tracking guidance</li>
+                            <li>Motivation and goal setting</li>
+                        </ul>
+                        <p>What can I help you with today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chatbot-input">
+                <div class="input-container">
+                    <input type="text" id="chatbot-input" placeholder="Ask me anything about fitness..." maxlength="500">
+                    <button id="chatbot-send" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <span>AI is typing...</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <script>
             // Update current time
@@ -893,6 +945,90 @@
                         alert('Add functionality would be implemented here');
                 }
             }
+            
+            // Chatbot functions
+            function openChatbot() {
+                document.getElementById('chatbot-modal').style.display = 'flex';
+                document.getElementById('chatbot-input').focus();
+            }
+            
+            function closeChatbot() {
+                document.getElementById('chatbot-modal').style.display = 'none';
+            }
+            
+            function sendMessage() {
+                const input = document.getElementById('chatbot-input');
+                const message = input.value.trim();
+                
+                if (!message) return;
+                
+                // Add user message to chat
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Show typing indicator
+                showTypingIndicator();
+                
+                // Send message to server
+                fetch('${pageContext.request.contextPath}/chatbot', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'message=' + encodeURIComponent(message)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    hideTypingIndicator();
+                    if (data.error) {
+                        addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+                    } else {
+                        addMessage(data.response, 'bot');
+                    }
+                })
+                .catch(error => {
+                    hideTypingIndicator();
+                    addMessage('Sorry, I\'m having trouble right now. Please try again later.', 'bot');
+                });
+            }
+            
+            function addMessage(content, sender) {
+                const messagesContainer = document.getElementById('chatbot-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = sender + '-message';
+                
+                const avatar = document.createElement('div');
+                avatar.className = 'message-avatar';
+                avatar.innerHTML = sender === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+                
+                const messageContent = document.createElement('div');
+                messageContent.className = 'message-content';
+                messageContent.innerHTML = '<p>' + content.replace(/\n/g, '<br>') + '</p>';
+                
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(messageContent);
+                messagesContainer.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+            
+            function showTypingIndicator() {
+                document.getElementById('typing-indicator').style.display = 'flex';
+                const messagesContainer = document.getElementById('chatbot-messages');
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+            
+            function hideTypingIndicator() {
+                document.getElementById('typing-indicator').style.display = 'none';
+            }
+            
+            // Allow Enter key to send message
+            document.getElementById('chatbot-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
         </script>
 <script>
 function buyWorkout(id) {

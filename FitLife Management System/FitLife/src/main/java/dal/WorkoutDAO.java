@@ -49,7 +49,7 @@ public class WorkoutDAO extends DBContext {
     public List<Workout> getAllWorkouts() {
         List<Workout> workouts = new ArrayList<>();
         try {
-            String sql = "SELECT w.*, u.username FROM Workouts w JOIN Users u ON w.user_id = u.user_id ORDER BY w.date DESC";
+            String sql = "SELECT * FROM Workouts ORDER BY workout_id DESC";
             PreparedStatement ps = c.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -61,7 +61,7 @@ public class WorkoutDAO extends DBContext {
                     rs.getInt("calories_burned"),
                     rs.getString("workout_type"),
                     rs.getString("description"),
-                    rs.getDate("date").toLocalDate(),
+                    rs.getDate("date") != null ? rs.getDate("date").toLocalDate() : null,
                     rs.getString("bmi_category")
                 );
                 workouts.add(workout);
@@ -84,6 +84,24 @@ public class WorkoutDAO extends DBContext {
             ps.setString(6, description);
             ps.setDate(7, java.sql.Date.valueOf(LocalDate.now()));
             ps.setString(8, bmiCategory);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    // Phương thức để thêm workout mẫu (không cần user_id)
+    public boolean addWorkout(Workout workout) {
+        try {
+            String sql = "INSERT INTO Workouts (workout_name, description, workout_type, duration, calories_burned) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, workout.getWorkoutName());
+            ps.setString(2, workout.getDescription());
+            ps.setString(3, workout.getWorkoutType());
+            ps.setInt(4, workout.getDuration());
+            ps.setInt(5, workout.getCaloriesBurned());
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
