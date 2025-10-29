@@ -12,7 +12,7 @@ import java.time.LocalDate;
  */
 public class Diet {
     private int dietId;
-    private int userId;
+   
     private String mealName;
     private int calories;
     private String mealType; // breakfast, lunch, dinner, snack
@@ -24,7 +24,7 @@ public class Diet {
 
     public Diet(int dietId, int userId, String mealName, int calories, String mealType, String description, LocalDate date, String bmiCategory) {
         this.dietId = dietId;
-        this.userId = userId;
+     
         this.mealName = mealName;
         this.calories = calories;
         this.mealType = mealType;
@@ -36,8 +36,7 @@ public class Diet {
     public int getDietId() { return dietId; }
     public void setDietId(int dietId) { this.dietId = dietId; }
 
-    public int getUserId() { return userId; }
-    public void setUserId(int userId) { this.userId = userId; }
+    
 
     public String getMealName() { return mealName; }
     public void setMealName(String mealName) { this.mealName = mealName; }

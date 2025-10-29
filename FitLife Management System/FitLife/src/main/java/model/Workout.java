@@ -12,7 +12,7 @@ import java.time.LocalDate;
  */
 public class Workout {
     private int workoutId;
-    private int userId;
+   
     private String workoutName;
     private int duration; // minutes
     private int caloriesBurned;
@@ -25,7 +25,7 @@ public class Workout {
 
     public Workout(int workoutId, int userId, String workoutName, int duration, int caloriesBurned, String workoutType, String description, LocalDate date, String bmiCategory) {
         this.workoutId = workoutId;
-        this.userId = userId;
+        
         this.workoutName = workoutName;
         this.duration = duration;
         this.caloriesBurned = caloriesBurned;
@@ -37,9 +37,6 @@ public class Workout {
 
     public int getWorkoutId() { return workoutId; }
     public void setWorkoutId(int workoutId) { this.workoutId = workoutId; }
-
-    public int getUserId() { return userId; }
-    public void setUserId(int userId) { this.userId = userId; }
 
     public String getWorkoutName() { return workoutName; }
     public void setWorkoutName(String workoutName) { this.workoutName = workoutName; }
